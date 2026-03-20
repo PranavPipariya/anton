@@ -1,0 +1,25 @@
+# Secrets — never commit
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Runtime artifacts
+.oncall_runs/
+*.log
+nohup.out
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+demo/sample_repo
