@@ -1,5 +1,5 @@
 """
-Slack integration for Airia On-Call.
+Slack integration for Anton.
 
 Sends structured Block Kit incident briefings and handles
 Approve / Request Changes interactive button callbacks.
@@ -60,7 +60,7 @@ def build_briefing_blocks(
     return [
         {
             "type": "header",
-            "text": {"type": "plain_text", "text": "🚨  Airia On-Call — Incident Response Ready", "emoji": True},
+            "text": {"type": "plain_text", "text": "🚨  Anton — Incident Response Ready", "emoji": True},
         },
         {"type": "divider"},
         {
@@ -123,7 +123,7 @@ def build_briefing_blocks(
         {
             "type": "context",
             "elements": [
-                {"type": "mrkdwn", "text": "Powered by *Airia On-Call*  ·  respond within 30 min or PR will be flagged for manual review"},
+                {"type": "mrkdwn", "text": "Powered by *Anton*  ·  respond within 30 min or PR will be flagged for manual review"},
             ],
         },
     ]
@@ -162,7 +162,7 @@ class SlackNotifier:
         self.client = AsyncWebClient(token=token)
         self.channel = channel
 
-    async def post_briefing(self, blocks: list[dict], text: str = "Airia On-Call — Incident Response Ready") -> str:
+    async def post_briefing(self, blocks: list[dict], text: str = "Anton — Incident Response Ready") -> str:
         """Post the briefing and return 'channel_id|ts' for later updates."""
         try:
             resp = await self.client.chat_postMessage(
@@ -203,11 +203,11 @@ class SlackNotifier:
 
 class MockSlackNotifier:
     def __init__(self):
-        self.channel = "#airia-oncall-demo"
+        self.channel = "#anton-demo"
 
     async def post_briefing(self, blocks: list[dict], text: str = "") -> str:
         print("\n" + "━" * 60)
-        print("📨  SLACK MESSAGE → #airia-oncall")
+        print("📨  SLACK MESSAGE → #anton")
         print("━" * 60)
         # Pretty-print the key sections
         for block in blocks:
@@ -239,7 +239,7 @@ class MockSlackNotifier:
 
 def get_slack_notifier(channel: Optional[str] = None):
     token = os.getenv("SLACK_BOT_TOKEN")
-    ch = channel or os.getenv("SLACK_CHANNEL", "#airia-oncall")
+    ch = channel or os.getenv("SLACK_CHANNEL", "#anton")
     if token:
         return SlackNotifier(token, ch)
     logger.warning("SLACK_BOT_TOKEN not set — using mock notifier")

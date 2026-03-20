@@ -1,4 +1,4 @@
-"""Jira REST API integration for Airia On-Call."""
+"""Jira REST API integration for Anton."""
 
 import os
 import logging
@@ -123,7 +123,7 @@ class JiraClient:
         logger.info("Comment added to Jira %s", issue_key)
 
     async def link_pr(self, issue_key: str, pr_url: str, pr_title: str) -> None:
-        comment = f"✅ Airia On-Call resolved this ticket.\n\nPull Request: [{pr_title}]({pr_url})"
+        comment = f"✅ Anton resolved this ticket.\n\nPull Request: [{pr_title}]({pr_url})"
         await self.add_comment(issue_key, comment)
         await self.update_status(issue_key, "Done")
 

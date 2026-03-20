@@ -1,5 +1,5 @@
 """
-GitHub integration for Airia On-Call.
+GitHub integration for Anton.
 
 Wraps PyGithub for the operations needed in the workflow:
   - Clone/read repo files

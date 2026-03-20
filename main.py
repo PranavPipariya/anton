@@ -1,5 +1,5 @@
 """
-Airia On-Call — Entry point.
+Anton — Entry point.
 
 Runs a FastAPI server that:
   - Accepts Jira webhooks  →  triggers the parallel agent pipeline
@@ -32,7 +32,7 @@ logging.basicConfig(
     format="%(asctime)s  %(levelname)-8s  %(name)s  %(message)s",
     datefmt="%H:%M:%S",
 )
-logger = logging.getLogger("airia-oncall")
+logger = logging.getLogger("anton")
 
 # Suppress noisy libraries
 logging.getLogger("httpx").setLevel(logging.WARNING)
@@ -54,7 +54,7 @@ REPO_CWD = os.getenv("REPO_CWD", os.path.join(os.path.dirname(__file__), "demo/s
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     print("\n" + "━" * 60)
-    print("  🚨  Airia On-Call — Ready")
+    print("  🚨  Anton — Ready")
     print(f"  Repo CWD : {REPO_CWD}")
     print(f"  Jira     : {'live' if os.getenv('JIRA_BASE_URL') else 'mock'}")
     print(f"  Slack    : {'live' if os.getenv('SLACK_BOT_TOKEN') else 'mock (terminal output)'}")
@@ -63,7 +63,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="Airia On-Call", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="Anton", version="1.0.0", lifespan=lifespan)
 
 
 # ── Jira webhook ──────────────────────────────────────────────────────────────
@@ -168,7 +168,7 @@ async def slack_command(request: Request, background: BackgroundTasks):
 
     return JSONResponse({
         "response_type": "in_channel",
-        "text": f"🚨 *Airia On-Call activated* — _{summary[:80]}_\nFour agents launching in parallel. Briefing incoming to <#aria-oncall>..."
+        "text": f"🚨 *Anton activated* — _{summary[:80]}_\nFour agents launching in parallel. Briefing incoming to <#aria-oncall>..."
     })
 
 
@@ -254,7 +254,7 @@ async def _handle_rejection(pipeline, feedback: str) -> None:
 
 @app.get("/health")
 def health():
-    return {"status": "ok", "service": "airia-oncall", "active_runs": len(_active_runs)}
+    return {"status": "ok", "service": "anton", "active_runs": len(_active_runs)}
 
 
 @app.get("/runs")

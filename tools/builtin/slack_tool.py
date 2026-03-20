@@ -1,4 +1,4 @@
-"""Slack builtin tools for Airia On-Call."""
+"""Slack builtin tools for Anton."""
 
 import os
 from typing import Any
@@ -51,7 +51,7 @@ class SlackBriefingParams(BaseModel):
 class SlackBriefingTool(Tool):
     name = "slack_post_briefing"
     description = (
-        "Post a structured Airia On-Call incident briefing to Slack with "
+        "Post a structured Anton incident briefing to Slack with "
         "Approve and Request Changes interactive buttons for human-in-the-loop review."
     )
     kind = ToolKind.NETWORK

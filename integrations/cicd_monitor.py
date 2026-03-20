@@ -1,5 +1,5 @@
 """
-CI/CD monitor for Airia On-Call.
+CI/CD monitor for Anton.
 
 Watches GitHub Actions runs and retrieves failure logs for the Code Agent
 to analyse and fix.

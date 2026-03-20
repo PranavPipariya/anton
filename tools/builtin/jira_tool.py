@@ -1,4 +1,4 @@
-"""Jira builtin tools for Airia On-Call."""
+"""Jira builtin tools for Anton."""
 
 import os
 from typing import Any, Optional

@@ -1,4 +1,4 @@
-# Airia On-Call dependencies
+# Anton dependencies
 
 # Web server
 fastapi>=0.110.0

@@ -1,5 +1,5 @@
 """
-Demo trigger — fires a fake Jira webhook at the local Airia On-Call server.
+Demo trigger — fires a fake Jira webhook at the local Anton server.
 
 Usage:
     python demo/trigger.py
@@ -43,7 +43,7 @@ DEMO_PAYLOAD = {
 def main():
     parser = argparse.ArgumentParser(description="Fire a demo Jira webhook")
     parser.add_argument("--ticket", default="BUG-42", help="Jira ticket key")
-    parser.add_argument("--port", default=8000, type=int, help="Port Airia On-Call is running on")
+    parser.add_argument("--port", default=8000, type=int, help="Port Anton is running on")
     args = parser.parse_args()
 
     payload = DEMO_PAYLOAD.copy()
@@ -58,7 +58,7 @@ def main():
         resp = httpx.post(url, json=payload, timeout=5)
         print(f"✅  Server accepted — HTTP {resp.status_code}")
     except httpx.ConnectError:
-        print(f"❌  Could not connect. Is Airia On-Call running?  (uvicorn main:app --port {args.port})")
+        print(f"❌  Could not connect. Is Anton running?  (uvicorn main:app --port {args.port})")
 
 
 if __name__ == "__main__":

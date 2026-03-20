@@ -1,5 +1,5 @@
 """
-Airia On-Call — Four parallel subagent definitions.
+Anton — Four parallel subagent definitions.
 
 Each agent runs in its own isolated context via SubagentTool.
 They are launched concurrently by the workflow orchestrator.
@@ -13,7 +13,7 @@ from tools.specialized_agents import SubagentDefinition
 TRIAGE_AGENT = SubagentDefinition(
     name="triage",
     description="Analyses the Jira ticket, maps acceptance criteria, determines priority label and affected component",
-    goal_prompt="""You are the Triage Agent for Airia On-Call.
+    goal_prompt="""You are the Triage Agent for Anton.
 
 Your responsibilities:
 1. Parse the Jira ticket title and description provided in your goal.
@@ -48,7 +48,7 @@ Do NOT read any files — work only from the ticket text given.""",
 CODE_AGENT = SubagentDefinition(
     name="code",
     description="Searches the repository, locates the bug, writes the minimal correct fix",
-    goal_prompt="""You are the Code Agent for Airia On-Call.
+    goal_prompt="""You are the Code Agent for Anton.
 
 Your responsibilities:
 1. Read the repository files to understand the codebase structure.
@@ -84,7 +84,7 @@ Be surgical. Only fix what is broken.""",
 TEST_AGENT = SubagentDefinition(
     name="test",
     description="Generates edge-case tests for the fix, runs the full test suite, reports pass/fail",
-    goal_prompt="""You are the Test Agent for Airia On-Call.
+    goal_prompt="""You are the Test Agent for Anton.
 
 Your responsibilities:
 1. Read the existing test file(s) for the affected module.
@@ -119,7 +119,7 @@ If all tests pass, clearly state: ALL TESTS PASSING ✅""",
 PR_AGENT = SubagentDefinition(
     name="pr",
     description="Drafts the full pull request description — problem, solution, test results, reviewer notes",
-    goal_prompt="""You are the PR Agent for Airia On-Call.
+    goal_prompt="""You are the PR Agent for Anton.
 
 Your responsibilities:
 Given the outputs from the Triage Agent, Code Agent, and Test Agent, write a

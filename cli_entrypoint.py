@@ -35,7 +35,7 @@ class CLI:
 
     async def run_interactive(self) -> Optional[str]:
         self.tui.print_welcome(
-            "Airia On-Call",
+            "Anton",
             lines=[
                 f"model: {self.config.model_name}",
                 f"cwd: {self.config.cwd}",
@@ -323,7 +323,7 @@ class CLI:
             console.print("[error]Usage: /oncall <TICKET-KEY>  e.g. /oncall BUG-42[/error]")
             return
 
-        console.print(f"\n[highlight]Airia On-Call[/highlight] — triggering pipeline for [bold]{ticket_key}[/bold]")
+        console.print(f"\n[highlight]Anton[/highlight] — triggering pipeline for [bold]{ticket_key}[/bold]")
         jira = get_jira_client()
         try:
             ticket = await jira.get_ticket(ticket_key.upper())

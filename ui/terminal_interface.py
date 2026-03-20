@@ -595,7 +595,7 @@ class TUI:
 
     def show_help(self) -> None:
         help_text = """
-## Airia On-Call — Commands
+## Anton — Commands
 
 ### On-Call Workflow
 - `/oncall <TICKET-KEY>` - Trigger the full on-call pipeline for a Jira ticket

@@ -1,5 +1,5 @@
 """
-Airia On-Call — Core parallel workflow pipeline.
+Anton — Core parallel workflow pipeline.
 
 Flow:
   1. Ingest Jira ticket
@@ -212,7 +212,7 @@ class OnCallPipeline:
         run_id = str(uuid.uuid4())[:8]
         pipeline = PipelineRun(run_id=run_id, ticket=ticket)
 
-        logger.info("━━━ Airia On-Call ▸ run %s ▸ %s ━━━", run_id, ticket.key)
+        logger.info("━━━ Anton ▸ run %s ▸ %s ━━━", run_id, ticket.key)
 
         # ── Step 1: Ingest CI failure (if available) ──────────────────────────
         ci_report = await self._ingest_ci()
@@ -294,7 +294,7 @@ class OnCallPipeline:
             body=pipeline.pr_description,
             head=pipeline.code.branch,
             base="main",
-            labels=["bug", "airia-oncall"],
+            labels=["bug", "anton"],
         )
         pipeline.pr = pr
         pipeline.approved = True

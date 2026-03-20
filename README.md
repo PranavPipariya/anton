@@ -1,14 +1,14 @@
-# Airia On-Call
+# Anton
 
 **Autonomous on-call engineering agent. Bug comes in. Four agents fix it in parallel. You approve in one tap.**
 
-Built for the Airia AI Agent Challenge — Track 2: Active Agents.
+Built for the hackathon — Track 2: Active Agents.
 
 ---
 
 ## What it does
 
-When a bug ticket arrives, Airia On-Call launches four specialized agents simultaneously:
+When a bug ticket arrives, Anton launches four specialized agents simultaneously:
 
 | Agent | Role |
 |---|---|
@@ -74,7 +74,7 @@ The agent engine (under `agent/`, `tools/`, `context/`, `safety/`) provides:
 - **GitHub** — branch creation, file commits, pull request creation with labels
 - **Jira** — ticket ingestion, status updates, PR linking on close
 - **CI/CD** — GitHub Actions log ingestion, failure analysis
-- **Airia Platform** — document generation API for incident reports
+- **Anton** — document generation API for incident reports
 
 ---
 
@@ -83,8 +83,8 @@ The agent engine (under `agent/`, `tools/`, `context/`, `safety/`) provides:
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/PranavPipariya/airia-oncall.git
-cd airia-oncall
+git clone https://github.com/PranavPipariya/anton.git
+cd anton
 pip install -r requirements.txt
 ```
 
@@ -153,4 +153,4 @@ Every pipeline run produces three documents automatically:
 - PyGithub — GitHub REST API
 - anthropic / openrouter — LLM backbone
 - asyncio — parallel agent execution
-- Airia Platform API — document generation
+- LLM Platform API — document generation
